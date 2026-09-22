@@ -28,6 +28,14 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
+  function editTask(id, newText) {
+  setTasks(
+    tasks.map((task) =>
+      task.id === id ? { ...task, text: newText } : task
+    )
+  );
+}
+
   return (
     <main className="app">
       <h1>Personal Task Manager</h1>
@@ -38,7 +46,7 @@ function App() {
       {tasks.length === 0 ? (
         <p className="message">No tasks yet. Add your first task above.</p>
       ) : (
-        <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
+        <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} onEdit={editTask} />
       )}
     </main>
   );
