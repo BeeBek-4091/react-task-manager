@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskForm from './components/TaskForm';
 import FilterBar from './components/FilterBar';
 import TaskList from './components/TaskList';
@@ -6,9 +6,14 @@ import StatsBar from './components/StatsBar';
 import './App.css';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+const [tasks, setTasks] = useState(() => {
+  const savedTasks = localStorage.getItem('tasks');
+  return savedTasks ? JSON.parse(savedTasks) : [];
+});
   const [filter, setFilter] = useState('All');
-
+  useEffect(() => {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}, [tasks]);
   function addTask(text, category) {
     const newTask = { id: Date.now(), text, category, completed: false };
     setTasks([...tasks, newTask]);
