@@ -31,7 +31,7 @@ export async function getAISuggestion(tasks) {
         {
           role: 'system',
           content:
-            'You are a helpful productivity assistant. Given a to-do list, write a short 2-3 sentence summary of it, then suggest which ONE task the user should do first and briefly say why. Keep it friendly and concise.',
+            'You are a helpful productivity assistant. Given a to-do list, write a short 2-3 sentence summary of it, then suggest which ONE task the user should do first and briefly say why. Keep it friendly and concise. Use plain text only: no markdown, no asterisks, no bullet symbols.',
         },
         {
           role: 'user',
@@ -47,5 +47,5 @@ export async function getAISuggestion(tasks) {
   }
 
   const data = await response.json();
-  return data.choices[0].message.content;
+  return data.choices[0].message.content.replace(/\*\*/g, '');
 }

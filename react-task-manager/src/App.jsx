@@ -6,10 +6,17 @@ import StatsBar from './components/StatsBar';
 import AISummary from './components/AISummary';
 import './App.css';
 
+const sampleTasks = [
+  { id: 1, text: 'Finish React project', category: 'Urgent', completed: false },
+  { id: 2, text: 'Buy groceries', category: 'Personal', completed: false },
+  { id: 3, text: 'Reply to team emails', category: 'Work', completed: false },
+  { id: 4, text: 'Go for a 20 minute walk', category: 'Personal', completed: true },
+];
+
 function App() {
 const [tasks, setTasks] = useState(() => {
   const savedTasks = localStorage.getItem('tasks');
-  return savedTasks ? JSON.parse(savedTasks) : [];
+  return savedTasks ? JSON.parse(savedTasks) : sampleTasks;
 });
   const [filter, setFilter] = useState('All');
   useEffect(() => {
