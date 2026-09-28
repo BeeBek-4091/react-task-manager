@@ -3,6 +3,7 @@ import TaskForm from './components/TaskForm';
 import FilterBar from './components/FilterBar';
 import TaskList from './components/TaskList';
 import StatsBar from './components/StatsBar';
+import AISummary from './components/AISummary';
 import './App.css';
 
 function App() {
@@ -56,6 +57,7 @@ const [tasks, setTasks] = useState(() => {
       <TaskForm onAddTask={addTask} />
       <FilterBar filter={filter} onFilterChange={setFilter} />
       <StatsBar active={activeCount} completed={completedCount} />
+      {tasks.length > 0 && <AISummary tasks={tasks} />}
 
       {tasks.length === 0 ? (
         <p className="message">No tasks yet. Add your first task above.</p>
