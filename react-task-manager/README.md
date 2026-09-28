@@ -1,5 +1,5 @@
 # Personal Task Manager
-
+**Live demo:** https://task-manager-bibek.vercel.app/
 A React task manager where you can add, edit, organize, and track your daily to-dos. It saves your tasks in the browser and includes an AI button that summarizes your list and suggests what to do first.
 
 ## Features
@@ -44,7 +44,7 @@ src/
 1. Clone the repository and open the folder in a terminal.
 2. Run `npm install`.
 3. Get a free API key from [console.groq.com](https://console.groq.com) (API Keys > Create API Key).
-4. Create a file named `.env` in the project root (you can copy `.env.example`) and add:
+4. Create a file named `.env` in the project root (you can copy `.env.sample`) and add:
 ```
    VITE_GROQ_API_KEY=your_actual_key_here
 ```
